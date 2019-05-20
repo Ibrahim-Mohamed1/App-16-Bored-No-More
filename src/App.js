@@ -4,14 +4,12 @@ import { withData } from './DataProvider';
 
 class App extends Component {
 
+  componentDidMount(){
+    this.props.getActivity()
+  }
+
   render() {
-    console.log(this.props.cat)
     const styles={
-      cat:{
-        width: "90%",
-        display:"block",
-        margin:"auto"
-      },
       button:{
         display: "block",
         margin: "auto",
@@ -27,9 +25,9 @@ class App extends Component {
       <div>
         <h1 style={{color: "black", textAlign:'center', fontSize: "3em", fontFamily: 'cursive', textDecoration: "underline", textDecorationColor: "gold"}}>Bored No More!</h1>
         <h1 style={{color: "black", textAlign:'center', fontFamily: 'cursive'}}>Find something to do!</h1>
-        <button style={styles.button} onClick={() => this.props.getCat()}>Something else</button>
+        <button style={styles.button} onClick={() => this.props.getActivity()}>Something else</button>
         <div style={{backgroundImage:"url()"}}>
-          <h1 style={{color: 'gold', textAlign:'center', backgroundColor: '#0000005e'}}>{this.props.cat}.</h1>
+          <h1 style={{color: 'gold', textAlign:'center', backgroundColor: '#0000005e'}}>{this.props.activity}.</h1>
         </div>
       </div>
     );

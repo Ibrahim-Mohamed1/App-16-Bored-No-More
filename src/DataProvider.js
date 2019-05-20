@@ -6,26 +6,24 @@ class DataProvider extends Component {
     constructor() {
         super()
         this.state = {
-            cat: []
+            activity: []
         }
     }
 
-    componentDidMount() {
-        this.getCat()
-    }
-
-    getCat = () => {
+    getActivity = () => {
         axios.get(`https://www.boredapi.com/api/activity/`).then(res => {
             this.setState({
-                cat: res.data.activity
+                activity: res.data.activity
             })
-        })
+        }).catch(function (error) {
+            window.location.reload()
+        });
     }
 
     render() {
         return (
             <Provider value={{
-                getCat: this.getCat,
+                getActivity: this.getActivity,
                 ...this.state
             }}
             >
